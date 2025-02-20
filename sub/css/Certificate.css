@@ -1,0 +1,36 @@
+@charset "uft-8";
+:root {--main-color:#004E81;}
+body { font-size: 1.5rem; line-height: 1.5; color: #fff; overflow-x: hidden;}
+.inner { max-width: 1720px; margin: 0 auto; padding: 0 20px;}
+
+.main {margin-top: 100px;}
+.main h2 {font-weight: 600; padding-top: 40px;}
+.certificate-container {display: flex; gap: 100px; align-items: center; position: relative; }
+
+.certificate-list {width: 40%;}
+.certificate-list::after { content: ""; position: absolute; top: 18%; left: 5px; width: 2px;
+    height: 58%;  background: #d9d9d9; border-radius: 2px;}
+
+.certificate-list::before { content: ""; position: absolute; top: 0; left: 0; transform: translate(-17%, -12%); width: 40%; height: 800px;  background: linear-gradient(#004978, #001D30); z-index: -1; border-radius: 0 20px 20px 0; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5)}
+  
+.text {cursor: pointer; padding: 50px; font-size: 1.8rem; font-weight: 400; }
+.text p {margin: 5px 0;}
+.text::before { content: ""; width: 12px; height: 12px;  background: transparent; border-radius: 50%;
+    position: absolute;  left: 0; transform: translateY(102%); transition: background-color 0.3s ease-in-out; z-index: 2; }
+
+.text:hover::before, .text.active::before { background: #F0A550;}
+.text:hover, .text.active { color: #F0A550; }
+  
+  /* 오른쪽 이미지 영역 */
+  .cot_img_container { width: 60%; position: relative; }
+  .cot_img h3 {font-size: 1.5rem; font-weight: 300; text-align: center; padding-bottom: 10px; color: #191919;}
+  
+  .cot_img {display: none;}
+  
+  .cot_img.active {display: flex; ;gap: 30px; justify-content:flex-end}
+  
+  .cot_img_left, .cot_img_right {max-width: 420px; max-height: 595px;}
+  
+  .cot_img img {width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  

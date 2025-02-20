@@ -1,22 +1,8 @@
 @charset "utf-8";
-/* --main-color:#F0A550; --main-color:#2870A0; */
 :root {--main-color:#004E81;}
 body { font-size: 1.5rem; line-height: 1.5; color: #101010; overflow-x: hidden;}
 .inner { max-width: 1720px; margin: 0 auto; padding: 0 20px;}
 
-/* header */
-#header .inner {display: flex; justify-content: space-between; padding: 40px 20px; align-items: center;}
-#header .inner .ham {position: relative; width: 36px; height: 20px; cursor: pointer; }
-#header .inner .ham::after {content: ""; position: absolute;  width: 100%; height: 2px;left: 0; top: 0; background:var(--main-color); display: block;}
-#header .inner .ham::before {content: ""; position: absolute; width: 100%; height: 2px; left: 0; bottom: 0; background:var(--main-color); display: block;}
-#header .inner .ham span {position: absolute;  width:100%; height: 2px; left: 0; top: 9px; background:var(--main-color); display: block;} 
-#header .inner .mgnb {display: none;}
-#header .inner .gnb {display: flex; justify-content: space-between; gap: 28px;}
-
-/* ham */
-#header .ham.active::after {transform: translate(0,7.5px) rotate(50deg); background-color: #F0A550}
-#header .ham.active::before {transform:  translate(0,-10.5px) rotate(-50deg); background-color: #F0A550;} 
-#header .ham.active span {opacity: 0;}
 
 /* main */
 
@@ -34,24 +20,69 @@ body { font-size: 1.5rem; line-height: 1.5; color: #101010; overflow-x: hidden;}
 
 /* 연도-고정 */
 .main .main_year_bottom { position:relative; display: flex; justify-content: space-between; text-align: center; align-items:center; width: 100%; font-size: 1.3rem; color: #D9D9D9;  margin: 100px auto 0;  transition: border-color 0.5s ease-in-out; background: #fff; border-top: 1px solid #D9D9D9; z-index: 10;}
-.main_year_bottom .progress {  position: absolute;  width: 0; height: 4px; border-color: #F0A550; max-width: 1300px; transition: width 0.3s ease-in-out; }
+.main_year_bottom .progress {  position: absolute;  width: 0; height: 2px; top: -20px;  left: 0;   transform: translateY(-50%); background-color: var(--main-color); transition: width 0.3s ease-in-out; }
 .main_year_bottom.fixed {position: fixed; top: 0; left: 50%; transform: translateX(-50%); width: 100vw; background: #fff; z-index: 7;; transition: all 0.3s ease-in-out; border-top: 1px solid #D9D9D9; transition: none; margin: 30px auto; max-width: 1720px;}
 .main .main_year_bottom .fixed_area {position: relative; width: 100%;  max-width: 1300px; margin: 0 auto;}
-.main_year_bottom::before { content: "";position: absolute; top: 0; left: 0; width: 100%; height: 110px; background-color: white;z-index: -1;}
+.main_year_bottom::before { content: "";position: absolute; width: 100vw; height: 120px; ;z-index: -1;  background: #fff; top: 50%; left: 50%; transform: translate(-50%,-52%);}
 
 .main .main_year_bottom .fixed_area ul { display: flex; justify-content: space-between; width: 100%;  padding-top: 20px;  align-items: center; }
+.main .main_year_bottom .fixed_area ul::before {content: "";position: absolute; top: 0; left: 0; width: 100%; height: 110px; z-index: -1; border-top: 1px solid #D9D9D9}
 .main_year_bottom ul li {position: relative; text-align: center;}
 .main_year_bottom ul li i {position: absolute; display: block; width: 16px; height: 16px;  top: -20px; left: 50%; transform: translate(-50%,-50%);  background: #d9d9d9;  border-radius: 50%; transition: background-color 0.3s ease-in-out;}
-.main_year_bottom.active, .main_year_bottom ul li.active i {border-color: #F0A550; background-color: #F0A550}
+.main_year_bottom ul li.active {color: var(--main-color);}
+.main_year_bottom ul li.active i {border-color: var(--main-color); background-color: var(--main-color)}
 
 
 /* 질문:.main .main_year_bottom::before로 border 선을 만들지? .main .main_year_bottom .main_year에 border-top을 주어 만들어야 하는지? html에 아예 class를 만들어서 공간을 만든 후 before를 사용해야할지 고민&여쭈어보기*/
 
-/* History_2020 */
-.History_2020 .inner {display: flex; gap: 30px; align-items: center; line-height: 3.5; padding-top: 200px; }
-.History_2020 .History_2020_img { background: url(../images/History/section-1/history_2020.png)no-repeat; height: 700px; max-width: 650px; width: 100%;}
-.History_2020 .History_2020_text {position: relative; display: flex; flex-direction: column; justify-content: center;}
-.History_2020 .History_2020_text::before {content: ""; height: calc(100% - 40px); width: 2px; background: #D9D9D9; position: absolute; left: -6.5%; transform: translateX(-50%);}
-.History_2020 .History_2020_text .year {position: absolute; font-size: 25rem; opacity: 0.05; font-weight: 400; white-space: nowrap; top: 50%; left: 25%; transform: translateY(-50%); z-index: -1;}
-.History_2020 .History_2020_text .timeline_text {position: relative; padding-left: 40px;}
-.History_2020 .History_2020_text .timeline_text::before {content: ""; position: absolute; width: 16px; height: 16px; background: #D9D9D9; border-radius: 50%; left: -6.5%; top: 50%; transform: translate(-50%, -50%);}
+/* History */
+.History .inner { line-height: 3.5; padding-top: 200px; justify-content: center; position: relative; width: 100%;}
+.History .sec_img {position: relative;}
+
+.History .History_text {position: absolute; display: flex; flex-direction: column; justify-content: center; color: #fff;  width: 80%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.History .History_text::before {content: ""; height: calc(100% - 60px); width: 2px; position: absolute; left: 50%; transform: translateX(-50%);   transition: height 0.5s ease-in-out;  background: #D9D9D9; }
+
+.History .History_text .year {position: absolute; font-size: 25rem; opacity: 0.05; font-weight: 400; white-space: nowrap; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1;}
+
+.History .timeline_text {  position: relative; display: flex; align-items: center;  width: 50%; padding: 10px 20px; font-size: 1.4rem; --dot-color: #d9d9d9; opacity: 0;  transition: opacity 0.5s ease-in-out;} 
+.History .timeline_text.show {  transform: translateY(0); animation: fadeInUp 0.8s forwards; opacity: 1; }
+.History .timeline_text.hide {opacity: 0; animation: none;}
+.History .History_text span {color: #F0A550;}
+
+.History .timeline_text:nth-child(odd) { text-align: left; justify-content: flex-end;  align-self: flex-start; }
+
+.History .timeline_text:nth-child(even) { text-align: right; justify-content: flex-start; align-self: flex-end;
+}
+
+/* 기본 점 스타일 */
+.History .timeline_text:nth-child(odd)::before, .History .timeline_text:nth-child(even)::before { content: "";
+position: absolute; display: block; width: 13px; height: 13px; border-radius: 50%; transition: background-color 0.3s ease-in-out;  background: #D9D9D9; }
+
+.History .timeline_text:nth-child(odd)::before { right: -6px;}
+.History .timeline_text:nth-child(even)::before { left: -7px;}
+.History .timeline_text.active::before {background-color: #F0A550;}
+
+.History .History_text.active::before {
+    height: var(--line-percentage);
+}
+
+/* History img */
+.History .History_sec3_img { background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/History/section-1/history_2020.png) no-repeat center / cover; height: 800px; max-width: 1920px; background-blend-mode: multiply;}
+.History .History_sec4_img { background:linear-gradient(#013354, #00101B), url(../images/History/section-1/history_2021.png)no-repeat center / cover;; height: 800px; max-width: 1920px; width: 100%; background-blend-mode: multiply;}
+.History .History_sec5_img { background: linear-gradient(#013354, #00101B), url(../images/History/section-1/history_2022.png)no-repeat center / cover;; height: 800px; max-width: 1920px; width: 100%; background-blend-mode: multiply;}
+.History .History_sec6_img { background: linear-gradient(#013354, #00101B), url(../images/History/section-1/history_2023.png)no-repeat center / cover;; height: 800px; max-width: 1920px; width: 100%; background-blend-mode: multiply;}
+.History .History_sec7_img { background: linear-gradient(#013354, #00101B), url(../images/History/section-1/history_2024.png)no-repeat center / cover;; height: 800px; max-width: 1920px; width: 100%; background-blend-mode: multiply;}
+.History .History_sec8_img { background: linear-gradient(#013354, #00101B),url(../images/History/section-1/history_2025.png)no-repeat center / cover;; height: 800px; max-width: 1920px; width: 100%; background-blend-mode: multiply;}
+
+.sec_img {transform: scale(1);}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
